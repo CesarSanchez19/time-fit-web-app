@@ -56,7 +56,7 @@
 
       <!-- Enlace a la página de colaboradores -->
       <router-link to="/Employees" class="menu-item" aria-label="Ir a colaboradores">
-        <i class="bi bi-person-lines-fill"></i>  <!-- Icono de colaboradores -->
+        <i class="bi bi-person-bounding-box"></i>  <!-- Icono de colaboradores -->
         <span v-if="!isCollapsed">Colaboradores</span>  <!-- Texto solo si la barra no está colapsada -->
       </router-link>
 
@@ -119,11 +119,15 @@
       </router-link>
     </nav>
 
-    <!-- Botón de cierre de sesión -->
-    <button class="logout" aria-label="Cerrar sesión">
-      <i class="bi bi-box-arrow-right"></i>  <!-- Icono de cerrar sesión -->
-      <span v-if="!isCollapsed">Cerrar Sesión</span>  <!-- Texto solo si la barra no está colapsada -->
-    </button>
+<!-- Envolvemos el botón con un router-link para dirigir al usuario a otro componente -->
+<router-link to="/Logout" class="logout-link">
+  <!-- Botón de cierre de sesión -->
+  <button class="logout" aria-label="Cerrar sesión">
+    <i class="bi bi-box-arrow-right"></i>  <!-- Icono de cerrar sesión -->
+    <span v-if="!isCollapsed">Cerrar Sesión</span>  <!-- Texto solo si la barra no está colapsada -->
+  </button>
+</router-link>
+
   </aside>
 </template>
 
@@ -170,29 +174,48 @@ const goToRevenue = () => {
 
 
 <style scoped>
-/* Estilos para la barra lateral */
+/* Estilo para la barra lateral */
 .sidebar {
-  background-color: #a64b2a; /* Color de fondo de la barra lateral */
-  color: white; /* Color del texto */
-  display: flex; /* Usamos flexbox para alinear los elementos en columna */
-  flex-direction: column; /* Establece la dirección de los elementos en columna */
-  padding: 1rem; /* Espaciado interno alrededor del contenido */
-  height: 136vh; /* La altura de la barra lateral es 136% de la altura de la ventana */
-  transition: width 0.3s ease; /* Transición suave en el cambio de ancho */
-  position: relative; /* Posicionamiento relativo para poder usarlo con elementos dentro */
-  width: 20%; /* Ancho de la barra lateral (20% del ancho de la pantalla) */
-  max-width: 350px; /* Ancho máximo de la barra lateral */
-  min-width: 90px; /* Ancho mínimo de la barra lateral */
+  background-color: #a64b2a; /* Establece el color de fondo de la barra lateral */
+  color: white; /* Establece el color del texto dentro de la barra lateral */
+  display: flex; /* Establece el contenedor como un Flexbox para organizar los elementos internos */
+  flex-direction: column; /* Organiza los elementos de la barra lateral de arriba hacia abajo (en una columna) */
+  padding: 1rem; /* Aplica un espaciado interno de 1rem alrededor de los elementos dentro de la barra lateral */
+  height: 100vh; /* Hace que la barra lateral ocupe el 100% de la altura de la ventana */
+  transition: width 0.3s ease; /* Aplica una transición suave de 0.3 segundos para cambiar el ancho de la barra lateral */
+  position: relative; /* Establece la posición del contenedor como relativa, para posicionar elementos dentro de él */
+  width: 15vw; /* Establece el ancho de la barra lateral en un 15% del ancho de la ventana */
+  max-width: 250px; /* Establece un ancho máximo de 250px para la barra lateral */
+  min-width: 70px; /* Establece un ancho mínimo de 70px para la barra lateral */
+  overflow-y: auto; /* Permite el desplazamiento vertical dentro de la barra lateral */
+  box-sizing: border-box; /* Incluye el padding y border en el cálculo del ancho y alto de la barra lateral */
+}
+
+/* la barra de desplazamiento */
+.sidebar::-webkit-scrollbar {
+  width: 6px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Estilo para el fondo de la barra de desplazamiento */
+.sidebar::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+/* Estilo para la "barrita pequeña" o deslizador (thumb) de la barra */
+.sidebar::-webkit-scrollbar-thumb {
+  background: #979696; /* Color del deslizador */
+  border-radius: 10px; /* Bordes redondeados para el deslizador */
 }
 
 /* Estilo cuando la barra lateral está colapsada */
 .sidebar.collapsed {
-  width: 90px; /* Ancho reducido cuando está colapsada */
+  width: 5rem; /* Ancho reducido cuando está colapsada */
 }
 
 /* Estilo para los iconos en el menú */
 .icon-size {
-  font-size: 1.1rem; /* Tamaño de fuente predeterminado para los iconos */
+  font-size: 1.2rem; /* Tamaño de fuente predeterminado para los iconos */
 }
 
 /* Estilos para el contenedor del logo */
@@ -213,8 +236,8 @@ const goToRevenue = () => {
 
 /* Estilo de la imagen del logo */
 .logo img {
-  width: 40px; /* Ancho de la imagen del logo */
-  height: 40px; /* Altura de la imagen del logo */
+  width: auto; /* Ancho de la imagen del logo */
+  height: 30px; /* Altura de la imagen del logo */
 }
 
 /* Estilo para el texto del logo */
@@ -225,7 +248,8 @@ const goToRevenue = () => {
 
 /* Estilo del texto dentro del logo */
 .logo-text span {
-  font-size: 1.1rem; /* Tamaño de fuente para el texto */
+  font-size: 0.9rem; /* Tamaño de fuente para el texto */
+  white-space: nowrap; /* Evitar que el texto se desborde */
 }
 
 /* Estilo para el botón de colapso */
@@ -234,7 +258,7 @@ const goToRevenue = () => {
   background: none; /* Sin fondo */
   border: none; /* Sin borde */
   color: white; /* Color blanco para el texto */
-  font-size: 1.5rem; /* Tamaño de la fuente para el ícono */
+  font-size: 1.2rem; /* Tamaño de la fuente para el ícono */
   cursor: pointer; /* El cursor se convierte en puntero al pasar el ratón */
   transition: transform 0.3s ease, color 0.3s ease; /* Transiciones suaves para el cambio de color y la animación */
 }
@@ -242,6 +266,7 @@ const goToRevenue = () => {
 /* Estilo para el texto en los elementos del menú */
 span {
   font-weight: 600; /* Pone en negrita el texto */
+  font-size: 0.85rem; /* Texto más pequeño */
 }
 
 /* Estilo para cuando el botón de colapso es hover */
@@ -258,7 +283,7 @@ nav.menu {
 nav.menu h3 {
   margin-top: 20px; /* Espacio en la parte superior */
   margin-bottom: 1rem; /* Espacio en la parte inferior */
-  font-size: 1.1rem; /* Tamaño de fuente */
+  font-size: 0.9rem; /* Tamaño de fuente */
   text-transform: uppercase; /* Convierte el texto a mayúsculas */
   font-weight: bolder; /* Pone el texto más en negrita */
 }
@@ -268,13 +293,14 @@ nav.menu h3 {
   display: flex; /* Usa flexbox para alinear los íconos y el texto */
   align-items: center; /* Alineación vertical centrada */
   gap: 0.75rem; /* Espacio entre los íconos y el texto */
-  padding: 0.5rem 1rem; /* Espaciado interno de los elementos */
+  padding: 0.4rem 0.8rem; /* Espaciado interno de los elementos */
   border-radius: 0.5rem; /* Bordes redondeados */
   color: white; /* Color del texto */
   text-decoration: none; /* Quita el subrayado */
-  font-size: 0.95rem; /* Tamaño de la fuente */
-  margin-bottom: 0.5rem; /* Espaciado entre los elementos del menú */
+  font-size: 0.8rem; /* Tamaño de la fuente */
+  margin-bottom: 0.35rem; /* Espaciado entre los elementos del menú */
   transition: background 0.3s; /* Transición suave en el fondo */
+  box-sizing: border-box; /* Incluir padding y margin en las medidas de ancho y alto */
 }
 
 /* Estilo cuando el cursor está sobre un elemento del menú */
@@ -283,9 +309,13 @@ nav.menu h3 {
   color: black; /* Cambia el color del texto a negro */
 }
 
-/* Estilos para los submenús */
+/* Estilo para el submenú con desplazamiento */
 .submenu {
-  padding-left: 1.5rem; /* Espaciado a la izquierda para los elementos del submenú */
+  padding-left: 1.5rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
 }
 
 /* Estilo para los elementos dentro de un submenú */
@@ -305,9 +335,16 @@ nav.menu h3 {
   color: black; /* Texto negro */
 }
 
-/* Estilos para el botón de cierre de sesión */
+/* Estilo para que el router-link no afecte el diseño */
+.logout-link {
+  margin-top: auto;
+  display: block;  /* Aseguramos que el link se comporte como un bloque */
+  text-decoration: none;  /* Quitamos el subrayado por defecto del link */
+}
+
+/* Mantener el estilo del botón de cierre de sesión */
 .logout {
-  margin-top: 15px; /* Espaciado en la parte superior */
+  margin-top: auto; /* Espaciado en la parte superior */
   display: flex; /* Usamos flexbox para alinear los elementos */
   align-items: center; /* Alineación vertical centrada */
   gap: 0.75rem; /* Espacio entre los íconos y el texto */
@@ -320,6 +357,14 @@ nav.menu h3 {
   justify-content: center; /* Alineación de los elementos del botón en el centro */
   cursor: pointer; /* El cursor se convierte en puntero al pasar el ratón */
   transition: background 0.3s; /* Transición suave del fondo */
+  width: 100%; /* Asegura que el botón ocupe todo el ancho disponible */
+  text-align: center; /* Alinea el texto dentro del botón */
+}
+
+/* Estilo cuando se pasa el ratón sobre el botón de cierre de sesión */
+.logout:hover {
+  background-color: #ff4300; /* Cambia el fondo a un color naranja más intenso */
+  color: white; /* Cambia el texto a blanco */
 }
 
 /* Estilo cuando se pasa el ratón sobre el botón de cierre de sesión */
@@ -335,7 +380,7 @@ nav.menu h3 {
   }
 
   .sidebar.collapsed {
-    width: 90px; /* Ancho de la barra lateral colapsada para pantallas mayores */
+    width: 5rem; /* Ancho de la barra lateral colapsada para pantallas mayores */
   }
 }
 
