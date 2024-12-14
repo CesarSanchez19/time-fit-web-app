@@ -1,10 +1,10 @@
 <template>
 
-  <section id="Settings">
+  <main id="Settings">
 
       <h1> Adjustes de la aplicacion </h1>
 
-  </section>
+  </main>
 
 </template>
 

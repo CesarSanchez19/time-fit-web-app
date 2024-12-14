@@ -1,10 +1,10 @@
 <template>
 
-  <section id="Notes">
+  <main id="Notes">
 
       <h1>Notas</h1>
 
-  </section>
+  </main>
 
 </template>
 

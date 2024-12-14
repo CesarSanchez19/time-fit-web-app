@@ -1,10 +1,10 @@
 <template>
 
-  <section id="Home">
+  <main id="Home">
 
       <h1> Menu de la aplicacion (inicio)</h1>
 
-  </section>
+  </main>
 
 </template>
 

@@ -1,10 +1,10 @@
 <template>
 
-  <section id="Calendar">
+  <main id="Calendar">
 
       <h1> Calendario </h1>
 
-  </section>
+  </main>
 
 </template>
 

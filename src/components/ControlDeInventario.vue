@@ -1,10 +1,10 @@
 <template>
 
-  <section id="Stock">
+  <main id="Stock">
 
       <h1> Gestion de Ventas / Control del Inventario </h1>
 
-  </section>
+  </main>
 
 </template>
 

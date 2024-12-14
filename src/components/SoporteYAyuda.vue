@@ -1,10 +1,10 @@
 <template>
 
-  <section id="Support">
+  <main id="Support">
 
       <h1>Soporte y Ayuda</h1>
 
-  </section>
+  </main>
 
 </template>
 

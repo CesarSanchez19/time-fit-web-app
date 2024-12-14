@@ -1,10 +1,10 @@
 <template>
 
-  <section id="Revenue">
+  <main id="Revenue">
 
       <h1> Gestion de Ventas / Ingresos </h1>
 
-  </section>
+  </main>
 
 </template>
 

@@ -1,10 +1,10 @@
 <template>
 
-  <section id="Employees">
+  <main id="Employees">
 
       <h1> Colaboradores</h1>
 
-  </section>
+  </main>
 
 </template>
 

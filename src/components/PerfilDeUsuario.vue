@@ -1,10 +1,10 @@
 <template>
 
-  <section id="Profile">
+  <main id="Profile">
 
       <h1>Perfil de Usuario</h1>
 
-  </section>
+  </main>
 
 </template>
 

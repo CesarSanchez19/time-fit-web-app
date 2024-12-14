@@ -1,10 +1,10 @@
 <template>
 
-  <section id="Plans">
+  <main id="Plans">
 
       <h1> Gestion de Membresias / Administrar Planes </h1>
 
-  </section>
+  </main>
 
 </template>
 

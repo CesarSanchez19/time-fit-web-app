@@ -1,10 +1,10 @@
 <template>
 
-  <section id="Users">
+  <main id="Users">
 
-      <h1>Gestion de Membresias / Usuarios</h1>
+      <h1>Gestion de membresias / Usuarios</h1>
 
-  </section>
+  </main>
 
 </template>
 
